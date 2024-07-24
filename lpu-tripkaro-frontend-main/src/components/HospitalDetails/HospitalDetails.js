@@ -7,7 +7,7 @@ function HospitalDetails({ match }) {
 
   useEffect(() => {
     const fetchHospital = async () => {
-      const response = await fetch(`${URL}/hos/hospitalDetails`);
+      const response = await fetch(`${URL}/hospitalDetails`);
       const result = await response.json();
       console.log(result)
       setHospital(result.data);
