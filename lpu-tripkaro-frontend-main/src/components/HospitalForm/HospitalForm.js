@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
 function HospitalForm() {
+  const URL ="https://hospital-management-n7cp.onrender.com"
   const [data, setData] = useState({
     name: '',
     city: '',
@@ -26,7 +27,7 @@ function HospitalForm() {
     e.preventDefault();
 
     // Send the data to the server
-    let result = await fetch('http://localhost:5000/hos/add', {
+    let result = await fetch(`${URL}/hos/add`, {
       method: 'post',
       headers: {
         'Content-Type': 'application/json',
