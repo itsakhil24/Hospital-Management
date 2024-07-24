@@ -27,7 +27,7 @@ function HospitalForm() {
     e.preventDefault();
 
     // Send the data to the server
-    let result = await fetch(`${URL}/hos/add`, {
+    let result = await fetch(`${URL}/add`, {
       method: 'post',
       headers: {
         'Content-Type': 'application/json',
