@@ -1,56 +1,92 @@
 import React, { useState, useEffect } from 'react';
-import './EditHospital.css';
+import { useParams, useNavigate } from 'react-router-dom';
 
-function EditHospital({ match }) {
-  const [hospital, setHospital] = useState(null);
+function EditHospital() {
+  const { id } = useParams();
+  const navigate = useNavigate();
+  
+  const [data, setData] = useState({
+    name: '',
+    city: '',
+    imageURL: '',
+    specialities: [],
+    rating: 0,
+  });
 
-  useEffect(() => {
-    const fetchHospital = async () => {
-      const response = await fetch(`/api/hospitals/${match.params.id}`);
-      const data = await response.json();
-      setHospital(data);
-    };
-    fetchHospital();
-  }, [match.params.id]);
+  const handleChange = (e) => {
+    const { name, value } = e.target;
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Handle form submission
+    if (name === 'specialities') {
+      const selectedOptions = [...e.target.selectedOptions].map(option => option.value);
+      setData({ ...data, [name]: selectedOptions });
+    } else if (name === 'rating') {
+      setData({ ...data, [name]: Number(value) });
+    } else {
+      setData({ ...data, [name]: value });
+    }
   };
 
-  if (!hospital) return <div>Loading...</div>;
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    // Send the data to the server
+    let result = await fetch(`http://localhost:5000/hos/editPost/${id}`, {
+      method: 'put',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    });
+
+    let response = await result.json();
+    console.log(response.msg);
+    alert(response.msg)
+
+
+
+    // Clear the form fields
+    setData({
+      name: '',
+      city: '',
+      imageURL: '',
+      specialities: [],
+      rating: 0,
+    });
+
+    alert(response.msg);
+    navigate('/');
+  };
+
+  
+
 
   return (
-    <form className="edit-hospital-form" onSubmit={handleSubmit}>
+    <form className="hospital-form" onSubmit={handleSubmit}>
       <label>
         Name:
-        <input type="text" value={hospital.name} disabled />
+        <input type="text" name="name" value={data.name} onChange={handleChange} />
       </label>
       <label>
         City:
-        <input type="text" value={hospital.city} disabled />
-      </label>
-      <label>
-        Rating:
-        <input type="number" value={hospital.rating} onChange={(e) => setHospital({ ...hospital, rating: Number(e.target.value) })} />
+        <input type="text" name="city" value={data.city} onChange={handleChange} />
       </label>
       <label>
         Image URL:
-        <input type="text" value={hospital.imageURL} onChange={(e) => setHospital({ ...hospital, imageURL: e.target.value })} />
+        <input type="text" name="imageURL" value={data.imageURL} onChange={handleChange} />
       </label>
       <label>
-        Description:
-        <textarea value={hospital.description} onChange={(e) => setHospital({ ...hospital, description: e.target.value })} />
+        Specialities:
+        <select multiple name="specialities" value={data.specialities} onChange={handleChange}>
+          <option value="Cardiology">Cardiology</option>
+          <option value="Neurology">Neurology</option>
+          <option value="Orthopedics">Orthopedics</option>
+        </select>
       </label>
       <label>
-        Number of Doctors:
-        <input type="number" value={hospital.numberOfDoctors} onChange={(e) => setHospital({ ...hospital, numberOfDoctors: Number(e.target.value) })} />
+        Rating:
+        <input type="number" name="rating" value={data.rating} onChange={handleChange} />
       </label>
-      <label>
-        Number of Departments:
-        <input type="number" value={hospital.numberOfDepartments} onChange={(e) => setHospital({ ...hospital, numberOfDepartments: Number(e.target.value) })} />
-      </label>
-      <button type="submit">Update Hospital</button>
+      <button type="submit">Add Hospital</button>
     </form>
   );
 }

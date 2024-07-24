@@ -5,6 +5,7 @@ import HospitalCreation from './screens/HospitalCreation';
 import HospitalDetails from './screens/HospitalDetails';
 import EditHospitalScreen from './screens/EditHospital';
 import HospitalListByCity from './screens/HospitalListByCity';
+import EditHospital from './components/EditHospital/EditHospital';
 
 function App() {
   return (
@@ -15,6 +16,8 @@ function App() {
         <Route path="/hospital/:id" element={<HospitalDetails />} />
         <Route path="/edit-hospital/:id" element={<EditHospitalScreen />} />
         <Route path="/hospitals" element={<HospitalListByCity />} />
+        <Route path="/edithsptl/:id" element={<EditHospital></EditHospital>} />
+        
       </Routes>
     </Router>
   );

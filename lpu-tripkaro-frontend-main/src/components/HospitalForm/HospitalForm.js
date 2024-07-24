@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function HospitalForm() {
+  const navigate = useNavigate();
   const [data, setData] = useState({
     name: '',
     city: '',
@@ -46,6 +48,7 @@ function HospitalForm() {
     });
 
     alert(response.msg);
+    navigate('/');
   };
 
   
