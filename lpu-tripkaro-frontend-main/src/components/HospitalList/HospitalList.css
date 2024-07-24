@@ -1,0 +1,32 @@
+.hospital-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    padding: 20px;
+  }
+  
+  .hospital-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    max-width: 300px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  .hospital-card img {
+    width: 100%;
+    height: auto;
+  }
+  
+  .hospital-card h3 {
+    margin: 10px 0;
+  }
+  
+  .hospital-card p {
+    color: #666;
+    padding: 0 10px 10px;
+  }
+  

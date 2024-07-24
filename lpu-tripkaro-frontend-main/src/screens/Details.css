@@ -1,0 +1,11 @@
+#container{
+    display: flex;
+    flex-wrap: nowrap;
+    padding: 0px 20px;
+    gap : 20px
+}
+
+.sold-out {
+    background-color: rgb(225, 133, 133);
+    padding: 10px
+}

@@ -1,0 +1,19 @@
+.hospital-list-by-city {
+    padding: 20px;
+    background-color: #f1f1f1;
+  }
+  
+  .hospital-list-by-city h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .hospital-list-by-city select {
+    display: block;
+    margin: 0 auto 20px;
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+  }
+  
