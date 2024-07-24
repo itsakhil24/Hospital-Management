@@ -2,11 +2,12 @@ import React, { useState, useEffect } from 'react';
 import './HospitalDetails.css';
 
 function HospitalDetails({ match }) {
+  const URL = "https://hospital-management-n7cp.onrender.com"
   const [hospital, setHospital] = useState(null);
 
   useEffect(() => {
     const fetchHospital = async () => {
-      const response = await fetch(`http://localhost:5000/hos/hospitalDetails`);
+      const response = await fetch(`${URL}/hos/hospitalDetails`);
       const result = await response.json();
       console.log(result)
       setHospital(result.data);
