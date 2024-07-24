@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect ,} from 'react';
 import './HospitalDetails.css';
 
 function HospitalDetails({ match }) {
@@ -18,6 +18,19 @@ function HospitalDetails({ match }) {
    
   }, []);
 
+  const handleDelete = async(id)=>{
+console.log(id)
+      const response = await fetch(`http://localhost:5000/hos/delete/${id}`,{
+        method:'DELETE'
+      })
+
+      const result = await response.json();
+      alert(result.msg)
+      <Link to="/"></Link>
+      // console.log(result.msg)
+      // console.log(result.data)   
+  }
+
   if (!hospital) return <div>Loading...</div>;
 
   return (
@@ -32,7 +45,7 @@ function HospitalDetails({ match }) {
             <h3>Location : {hospital.city}</h3>
             <p>Rating : {hospital.rating}</p>
             <p>Specialities : {hospital.specialities}</p>
-            <button>Edit</button>
+            <button onClick={(e)=>{handleDelete(hospital._id)}}>Delete</button>
             <hr></hr>
           </div>
          ) 

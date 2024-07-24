@@ -48,6 +48,9 @@ function HospitalForm() {
     alert(response.msg);
   };
 
+  
+
+
   return (
     <form className="hospital-form" onSubmit={handleSubmit}>
       <label>
