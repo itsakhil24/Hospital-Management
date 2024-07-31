@@ -4,7 +4,6 @@ import './HospitalForm.css';
 
 
 function HospitalForm() {
-  const navigate = useNavigate();
   const [data, setData] = useState({
     name: '',
     city: '',
@@ -30,7 +29,7 @@ function HospitalForm() {
     e.preventDefault();
 
     // Send the data to the server
-    let result = await fetch('http://localhost:5000/hos/add', {
+    let result = await fetch(`${URL}/add`, {
       method: 'post',
       headers: {
         'Content-Type': 'application/json',

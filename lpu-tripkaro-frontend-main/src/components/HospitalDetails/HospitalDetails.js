@@ -5,12 +5,11 @@ import { useNavigate } from "react-router-dom";
 import './HospitalDetails.css';
 
 function HospitalDetails({ match }) {
-  const navigate = useNavigate();
   const [hospital, setHospital] = useState(null);
 
   useEffect(() => {
     const fetchHospital = async () => {
-      const response = await fetch(`http://localhost:5000/hos/hospitalDetails`);
+      const response = await fetch(`${URL}/hospitalDetails`);
       const result = await response.json();
       console.log(result)
       setHospital(result.data);
