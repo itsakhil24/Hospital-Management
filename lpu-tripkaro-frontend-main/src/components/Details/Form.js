@@ -2,6 +2,7 @@ import React, {useState} from 'react'
 import './Form.css'
 import {useNavigate} from 'react-router-dom'
 
+
 const Form = ({data, userInfo, setUserInfo}) => {
 
     const navigation = useNavigate()

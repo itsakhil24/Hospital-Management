@@ -1,6 +1,7 @@
 import React from 'react';
 import Navbar from '../components/common/Navbar';
 import HospitalList from '../components/HospitalList/HospitalList';
+import './HospitalListByCity.css';
 
 function HospitalListByCity() {
   return (

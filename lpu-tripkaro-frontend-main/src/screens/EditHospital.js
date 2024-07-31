@@ -1,6 +1,8 @@
 import React from 'react';
 import Navbar from '../components/common/Navbar';
 import EditHospital from '../components/EditHospital/EditHospital';
+import './EditHospital.css';
+
 
 function EditHospitalScreen({ match }) {
   return (

@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import './HospitalForm.css';
+
 
 function HospitalForm() {
   const navigate = useNavigate();

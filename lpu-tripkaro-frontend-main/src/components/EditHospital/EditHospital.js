@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import './EditHospital.css';
 
 function EditHospital() {
   const { id } = useParams();

@@ -6,6 +6,7 @@ import HospitalDetails from './screens/HospitalDetails';
 import EditHospitalScreen from './screens/EditHospital';
 import HospitalListByCity from './screens/HospitalListByCity';
 import EditHospital from './components/EditHospital/EditHospital';
+import './App.css';
 
 function App() {
   return (

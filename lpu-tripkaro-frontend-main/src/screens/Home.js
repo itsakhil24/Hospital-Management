@@ -1,6 +1,7 @@
 import React from 'react';
 import Navbar from '../components/common/Navbar';
 import HospitalDetails from '../components/HospitalDetails/HospitalDetails';
+import './Home.css';
 
 function Home() {
   
