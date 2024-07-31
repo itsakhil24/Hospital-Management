@@ -673,3 +673,9 @@
 /hos/hospitalDetails GET 2024-07-24T18:07:24.301Z 
 /hos/editPost/66a0f58e0e50d511e490da12 PUT 2024-07-24T18:08:28.339Z 
 /hos/hospitalDetails GET 2024-07-24T18:08:31.637Z 
+/hos/hospitalDetails GET 2024-07-24T18:51:39.753Z 
+/hos/hospitalDetails GET 2024-07-24T18:51:47.950Z 
+/hos/hospitalDetails GET 2024-07-24T18:53:15.758Z 
+/hos/delete/66a0f58e0e50d511e490da12 DELETE 2024-07-24T18:53:18.299Z 
+/hos/delete/66a13b12db143c0f4e770b2b DELETE 2024-07-24T18:53:26.909Z 
+/hos/hospitalDetails GET 2024-07-24T18:53:34.729Z 
