@@ -13,4 +13,3 @@ function HospitalDetailsPage({ match }) {
 }
 
 export default HospitalDetails;
-

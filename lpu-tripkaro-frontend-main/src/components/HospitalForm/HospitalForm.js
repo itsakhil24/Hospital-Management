@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './HospitalForm.css';
 
-
 function HospitalForm() {
   const [data, setData] = useState({
     name: '',
@@ -11,15 +10,15 @@ function HospitalForm() {
     specialities: [],
     rating: 0,
   });
+  const navigate = useNavigate(); // Define the navigate function
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-
     if (name === 'specialities') {
       const selectedOptions = [...e.target.selectedOptions].map(option => option.value);
       setData({ ...data, [name]: selectedOptions });
     } else if (name === 'rating') {
-      setData({ ...data, [name]: Number(value) });
+      setData({ ...data, [name]: Number(value) }); 
     } else {
       setData({ ...data, [name]: value });
     }
@@ -27,34 +26,45 @@ function HospitalForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    // Send the data to the server
-    let result = await fetch(`${URL}/add`, {
-      method: 'post',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(data),
-    });
-
-    let response = await result.json();
-
-    // Clear the form fields
-    setData({
-      name: '',
-      city: '',
-      imageURL: '',
-      specialities: [],
-      rating: 0,
-    });
-
-    alert(response.msg);
-    navigate('/');
-  };
-
+    try {
+      const response = await fetch('http://localhost:3000/hos/add', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
   
-
-
+      if (!response.ok) {
+        const text = await response.text(); // Get the response text for debugging
+        throw new Error(`Server error: ${text}`);
+      }
+  
+      let responseData;
+      try {
+        responseData = await response.json();
+      } catch (jsonError) {
+        throw new Error('Failed to parse JSON response: ' + jsonError.message);
+      }
+  
+      console.log(responseData);
+  
+      // Clear the form fields
+      setData({
+        name: '',
+        city: '',
+        imageURL: '',
+        specialities: [],
+        rating: 0,
+      });
+  
+      alert(responseData.msg);
+      navigate('/');
+    } catch (error) {
+      console.error('There was a problem with the fetch operation:', error);
+      alert(`Error: ${error.message}`);
+    }
+  };
   return (
     <form className="hospital-form" onSubmit={handleSubmit}>
       <label>
